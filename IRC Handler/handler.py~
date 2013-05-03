@@ -1,0 +1,13 @@
+from scapy.all import *
+import IRC
+
+class Handler():
+
+    def __init__(self,file_path):
+        self.file_path = file_path
+
+    def summary(self):
+        pcap = rdpcap(self.file_path)
+        for pkt in pcap:
+            if pkt.haslayer(IRC):
+                pkt.show()
