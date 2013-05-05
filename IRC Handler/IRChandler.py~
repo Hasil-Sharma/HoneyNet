@@ -1,0 +1,15 @@
+from scapy.all import *
+from IRC import *
+
+class IRCHandler():
+    def __init__(self,filepath):
+        self.packets = rdpcap(filepath)
+
+    def IRCDissect(self):
+        for pkt in self.packets:
+            if pkt.haslayer(IRC):
+                print pkt.show()
+
+
+a = IRCHandler("SkyelIRC.cap")
+a.IRCDissect()

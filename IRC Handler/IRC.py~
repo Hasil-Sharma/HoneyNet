@@ -18,10 +18,10 @@ class IRC(Packet):
         for x in a:
             if len(x) > 0:
                 if x[0] == ':':
-                    prefix = x[1: x.find(space)]
+                    prefix = x[1: x.find(" ")]
                     x = x.strip(":" + prefix + " ")
                     self.setfieldval(elements[0].name, prefix)
-                command = x[:x.find(space)]
+                command = x[:x.find(" ")]
                 self.setfieldval(elements[1].name, command)
                 x = x.strip(command + " ")
                 command_parameters = x[:x.find(" :")]
